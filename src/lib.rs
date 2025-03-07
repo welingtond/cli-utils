@@ -1,10 +1,14 @@
+//! This is a library for stock price search
+
 #[derive(Debug)]
+/// TimeKey is a struct that holds the date and time of a stock price
 pub struct TimeKey {
     date: String,
     time: String,
 }
 
 impl TimeKey {
+    /// Create a new TimeKey
     pub fn new(date: &str, time: &str) -> TimeKey {
         TimeKey {
             date: date.to_string(),
@@ -14,6 +18,7 @@ impl TimeKey {
     
 }
 #[derive(Debug)]
+/// StockPrice is a struct that holds the stock price data
 pub struct StockPrice {
     timestamp: TimeKey,
     open: f64,
@@ -24,6 +29,7 @@ pub struct StockPrice {
 }
 
 impl StockPrice {
+    /// Create a new StockPrice
     pub fn new(data_line: String) -> StockPrice {
         let binding = data_line.replace(" ", ",") ;
         let binding: Vec<&str> = binding.split(",").collect();
@@ -38,6 +44,7 @@ impl StockPrice {
     }
 }
 
+/// search_stock_price searches for the stock price of a given stock
 pub fn search_stock_price(stock_name: &str/* , api_key: &str {Not by now...}*/) -> f64 {
     // Call the API to get the stock price
     // For now, just return a hardcoded value
